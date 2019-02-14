@@ -32,14 +32,18 @@ export default function parse(selector) {
     let tokens = [], sawWS = false, token;
 
     function getName() {
-        const sub = selector.match(nameRe)[0];
-        selector = selector.substr(sub.length);
-        return unescapeCSS(sub);
+        const name = selector.match(nameRe)[0];
+        reduceSelector(name.length);
+        return unescapeCSS(name);
+    }
+
+    function reduceSelector(index) {
+        selector = selector.substring(index);
     }
 
     function stripWhitespace(start) {
         while (isWhitespace(selector.charAt(start))) start++;
-        selector = selector.substr(start);
+        reduceSelector(start);
     }
 
     function isEscaped(pos) {
@@ -84,26 +88,26 @@ export default function parse(selector) {
                 sawWS = false;
             }
             if (char === '*') {
-                selector = selector.substr(1);
+                reduceSelector(1);
                 token.nodeName = '*';
             } else if (char === '#') {
-                selector = selector.substr(1);
+                reduceSelector(1);
                 token.attributes.push({
                     name: 'id',
                     operator: '=',
                     value: getName()
                 });
             } else if (char === '.') {
-                selector = selector.substr(1);
+                reduceSelector(1);
                 token.attributes.push({
                     name: 'class',
                     operator: '~=',
                     value: getName()
                 });
             } else if (char === '[') {
-                selector = selector.substr(1);
+                reduceSelector(1);
                 const data = selector.match(atttributeRe);
-                selector = selector.substr(data[0].length);
+                reduceSelector(data[0].length);
                 const name = unescapeCSS(data[1]).toLowerCase();
                 token.attributes.push({
                     name,
@@ -111,7 +115,7 @@ export default function parse(selector) {
                     value: unescapeCSS(data[4] || data[5] || '')
                 });
             } else if (char === ':') {
-                selector = selector.substr(1);
+                reduceSelector(1);
                 const name = getName().toLowerCase();
                 let value = '';
                 if (selector.charAt(0) === '(') {
@@ -120,8 +124,8 @@ export default function parse(selector) {
                         if (selector.charAt(pos) === '(' && !isEscaped(pos)) counter++;
                         else if (selector.charAt(pos) === ')' && !isEscaped(pos)) counter--;
                     }
-                    value = selector.substr(1, pos - 2);
-                    selector = selector.substr(pos);
+                    value = selector.substring(1, pos - 1);
+                    reduceSelector(pos);
                     const quot = value.charAt(0);
                     if (quot === value.slice(-1) && isQuote(quot)) {
                         value = value.slice(1, -1);
