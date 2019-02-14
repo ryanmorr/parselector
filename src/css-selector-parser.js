@@ -9,11 +9,13 @@ const atttributeRe = /^\s*((?:\\.|[\w\u00c0-\uFFFF\-])+)\s*(?:(\S?=)\s*(?:(['"])
 function unescapeCSS(str) {
     return str.replace(escapeRe, (all, escaped, escapedWhitespace) => {
         const high = '0x' + escaped - 0x10000;
-        return high !== high || escapedWhitespace ?
-            escaped :
-            high < 0 ?
-                String.fromCharCode(high + 0x10000) :
-                String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
+        /* eslint-disable-next-line no-self-compare */
+        if (high !== high || escapedWhitespace) {
+            return escaped;
+        } else if (high < 0) {
+            return String.fromCharCode(high + 0x10000);
+        }
+        return String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
     });
 }
 
