@@ -52,6 +52,10 @@ export default function parse(selector) {
         return (slashCount & 1) === 1;
     }
 
+    function isEmptyToken() {
+        return !token.nodeName && token.attributes.length === 0 && token.pseudos.length === 0;
+    }
+
     function resetToken() {
         token = {
             attributes: [],
@@ -68,7 +72,9 @@ export default function parse(selector) {
             sawWS = true;
             stripWhitespace(1);
         } else if (char === '>' || char === '<' || char === '~' || char === '+') {
-            tokens.push(token);
+            if (!isEmptyToken()) {
+                tokens.push(token);
+            }
             tokens.push(char);
             resetToken();
             sawWS = false;
@@ -82,7 +88,9 @@ export default function parse(selector) {
             stripWhitespace(1);
         } else {
             if (sawWS) {
-                tokens.push(token);
+                if (!isEmptyToken()) {
+                    tokens.push(token);
+                }
                 tokens.push(' ');
                 resetToken();
                 sawWS = false;

@@ -101,4 +101,64 @@ describe('css-selector-parser/combinators', () => {
             ]
         );
     });
+
+    it('should tokenize a leading child combinator', () => {
+        expect(parse('> div')).to.deep.equal(
+            [
+                [
+                    '>',
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should tokenize a leading parent combinator', () => {
+        expect(parse('< div')).to.deep.equal(
+            [
+                [
+                    '<',
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should tokenize a leading adjacent sibling combinator', () => {
+        expect(parse('+ div')).to.deep.equal(
+            [
+                [
+                    '+',
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should tokenize a leading general sibling combinator', () => {
+        expect(parse('~ div')).to.deep.equal(
+            [
+                [
+                    '~',
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
 });
