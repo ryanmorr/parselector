@@ -19,9 +19,17 @@ function unescapeCSS(str) {
     });
 }
 
+function isWhitespace(c) {
+    return c === ' ' || c === '\n' || c === '\t' || c === '\f' || c === '\r';
+}
+
+function isQuote(c) {
+    return c === '"' || c === '\'';
+}
+
 export default function parse(selector) {
     const groups = [];
-    let tokens = [], sawWS = false, token, data, char, name, quot;
+    let tokens = [], sawWS = false, token;
 
     function getName() {
         const sub = selector.match(nameRe)[0];
@@ -34,18 +42,10 @@ export default function parse(selector) {
         selector = selector.substr(start);
     }
 
-    function isWhitespace(c) {
-        return c === ' ' || c === '\n' || c === '\t' || c === '\f' || c === '\r';
-    }
-
     function isEscaped(pos) {
         let slashCount = 0;
         while (selector.charAt(--pos) === '\\') slashCount++;
         return (slashCount & 1) === 1;
-    }
-
-    function isQuote(c) {
-        return c === '"' || c === '\'';
     }
 
     function resetToken() {
@@ -59,7 +59,7 @@ export default function parse(selector) {
     selector = selector.trim();
 
     while (selector !== '') {
-        char = selector.charAt(0);
+        const char = selector.charAt(0);
         if (isWhitespace(char)) {
             sawWS = true;
             stripWhitespace(1);
@@ -102,9 +102,9 @@ export default function parse(selector) {
                 });
             } else if (char === '[') {
                 selector = selector.substr(1);
-                data = selector.match(atttributeRe);
+                const data = selector.match(atttributeRe);
                 selector = selector.substr(data[0].length);
-                name = unescapeCSS(data[1]).toLowerCase();
+                const name = unescapeCSS(data[1]).toLowerCase();
                 token.attributes.push({
                     name,
                     operator: data[2] || '',
@@ -112,23 +112,23 @@ export default function parse(selector) {
                 });
             } else if (char === ':') {
                 selector = selector.substr(1);
-                name = getName().toLowerCase();
-                data = '';
+                const name = getName().toLowerCase();
+                let value = '';
                 if (selector.charAt(0) === '(') {
                     let pos = 1, counter = 1;
                     for (; counter > 0 && pos < selector.length; pos++) {
                         if (selector.charAt(pos) === '(' && !isEscaped(pos)) counter++;
                         else if (selector.charAt(pos) === ')' && !isEscaped(pos)) counter--;
                     }
-                    data = selector.substr(1, pos - 2);
+                    value = selector.substr(1, pos - 2);
                     selector = selector.substr(pos);
-                    quot = data.charAt(0);
-                    if (quot === data.slice(-1) && isQuote(quot)) {
-                        data = data.slice(1, -1);
+                    const quot = value.charAt(0);
+                    if (quot === value.slice(-1) && isQuote(quot)) {
+                        value = value.slice(1, -1);
                     }
-                    data = unescapeCSS(data);
+                    value = unescapeCSS(value);
                 }
-                token.pseudos.push({name, value: data});
+                token.pseudos.push({name, value});
             } else if (nameRe.test(selector)) {
                 token.nodeName = getName().toLowerCase();
             }
