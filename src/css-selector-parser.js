@@ -9,8 +9,7 @@ const atttributeRe = /^\s*((?:\\.|[\w\u00c0-\uFFFF\-])+)\s*(?:(\S?=)\s*(?:(['"])
 function unescapeCSS(str) {
     return str.replace(escapeRe, (all, escaped, escapedWhitespace) => {
         const high = '0x' + escaped - 0x10000;
-        /* eslint-disable-next-line no-self-compare */
-        if (high !== high || escapedWhitespace) {
+        if (Number.isNaN(high) || escapedWhitespace) {
             return escaped;
         } else if (high < 0) {
             return String.fromCharCode(high + 0x10000);
