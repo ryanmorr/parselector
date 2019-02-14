@@ -28,7 +28,7 @@ function isQuote(c) {
 
 export default function parse(selector) {
     const groups = [];
-    let tokens = [], sawWS = false, token;
+    let tokens = [], hasWhitespace = false, token;
 
     function getName() {
         const name = selector.match(nameRe)[0];
@@ -51,10 +51,6 @@ export default function parse(selector) {
         return (slashCount & 1) === 1;
     }
 
-    function isEmptyToken() {
-        return !token.nodeName && token.attributes.length === 0 && token.pseudos.length === 0;
-    }
-
     function resetToken() {
         token = {
             attributes: [],
@@ -68,31 +64,29 @@ export default function parse(selector) {
     while (selector !== '') {
         const char = selector.charAt(0);
         if (isWhitespace(char)) {
-            sawWS = true;
+            hasWhitespace = true;
             stripWhitespace(1);
         } else if (char === '>' || char === '<' || char === '~' || char === '+') {
-            if (!isEmptyToken()) {
+            if (token.nodeName || token.attributes.length > 0 || token.pseudos.length > 0) {
                 tokens.push(token);
             }
             tokens.push(char);
             resetToken();
-            sawWS = false;
+            hasWhitespace = false;
             stripWhitespace(1);
         } else if (char === ',') {
             tokens.push(token);
             groups.push(tokens);
             resetToken();
             tokens = [];
-            sawWS = false;
+            hasWhitespace = false;
             stripWhitespace(1);
         } else {
-            if (sawWS) {
-                if (!isEmptyToken()) {
-                    tokens.push(token);
-                }
+            if (hasWhitespace) {
+                tokens.push(token);
                 tokens.push(' ');
                 resetToken();
-                sawWS = false;
+                hasWhitespace = false;
             }
             if (char === '*') {
                 reduceSelector(1);
