@@ -67,7 +67,7 @@ export default function parse(selector) {
         if (isWhitespace(char)) {
             sawWS = true;
             stripWhitespace(1);
-        } else if (char === '>' || char === '~' || char === '+') {
+        } else if (char === '>' || char === '<' || char === '~' || char === '+') {
             tokens.push(token);
             tokens.push(char);
             resetToken();

@@ -81,4 +81,24 @@ describe('css-selector-parser/combinators', () => {
             ]
         );
     });
+
+    it('should tokenize a parent combinator', () => {
+        expect(parse('div < span')).to.deep.equal(
+            [
+                [
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    },
+                    '<',
+                    {
+                        nodeName: 'span',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
 });
