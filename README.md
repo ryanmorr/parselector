@@ -8,7 +8,7 @@
 
 ## Install
 
-Download the [development](http://github.com/ryanmorr/css-selector-parser/raw/master/dist/css-selector-parser.js) or [minified](http://github.com/ryanmorr/css-selector-parser/raw/master/dist/css-selector-parser.min.js) version, or install via NPM:
+Download the [development](http://github.com/ryanmorr/css-selector-parser/raw/master/dist/parse.js) or [minified](http://github.com/ryanmorr/css-selector-parser/raw/master/dist/parse.min.js) version, or install via NPM:
 
 ``` sh
 npm install @ryanmorr/css-selector-parser
