@@ -161,4 +161,24 @@ describe('css-selector-parser/combinators', () => {
             ]
         );
     });
+
+    it('should tokenize a decendent combinator with whitespace', () => {
+        expect(parse('div\t \n \tspan')).to.deep.equal(
+            [
+                [
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    },
+                    ' ',
+                    {
+                        nodeName: 'span',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
 });
