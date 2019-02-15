@@ -107,4 +107,22 @@ describe('css-selector-parser/pseudos', () => {
             ]
         );
     });
+
+    it('should handle pseudo value containing a selector string', () => {
+        expect(parse(':not(div#foo.bar.baz[foo=bar][foo $= "bar"]:foo:bar("baz"))')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [],
+                        pseudos: [
+                            {
+                                name: 'not',
+                                value: 'div#foo.bar.baz[foo=bar][foo $= "bar"]:foo:bar("baz")'
+                            }
+                        ]
+                    }
+                ]
+            ]
+        );
+    });
 });
