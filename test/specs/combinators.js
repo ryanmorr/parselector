@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import parse from '../../src/css-selector-parser';
 
 describe('css-selector-parser/combinators', () => {
-    it('should tokenize a decendent combinator', () => {
+    it('should tokenize a descendant combinator', () => {
         expect(parse('div span')).to.deep.equal(
             [
                 [
@@ -162,7 +162,7 @@ describe('css-selector-parser/combinators', () => {
         );
     });
 
-    it('should tokenize a decendent combinator with whitespace', () => {
+    it('should tokenize a descendant combinator with whitespace', () => {
         expect(parse('div\t \n \tspan')).to.deep.equal(
             [
                 [
