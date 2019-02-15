@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import parse from '../../src/css-selector-parser';
+import parse from '../../src/parse';
 
-describe('css-selector-parser/attributes', () => {
+describe('parse/attributes', () => {
     it('should tokenize "[attr]" attribute selector', () => {
         expect(parse('[foo]')).to.deep.equal(
             [

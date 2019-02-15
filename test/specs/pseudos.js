@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import parse from '../../src/css-selector-parser';
+import parse from '../../src/parse';
 
-describe('css-selector-parser/pseudos', () => {
+describe('parse/pseudos', () => {
     it('should tokenize pseudo-class selectors', () => {
         expect(parse(':checked')).to.deep.equal(
             [

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import parse from '../../src/css-selector-parser';
+import parse from '../../src/parse';
 
-describe('css-selector-parser/combinators', () => {
+describe('parse/combinators', () => {
     it('should tokenize a descendant combinator', () => {
         expect(parse('div span')).to.deep.equal(
             [

@@ -17,22 +17,11 @@ const banner = `/*! ${pkg.name} v${pkg.version} | ${pkg.homepage} */\n`;
 const config = {
     name: 'parse',
     files: './src/**/*.js',
-    entryFile: './src/css-selector-parser.js',
-    outputFile: 'css-selector-parser.js',
+    entryFile: './src/parse.js',
+    outputFile: 'parse.js',
     outputDir: './dist/',
     specs: './test/specs/*.js'
 };
-
-function unitTests() {
-    return gulp.src(config.specs)
-        .pipe(mocha({
-            ui: 'bdd',
-            reporter: 'spec',
-            require: [
-                '@babel/register'
-            ]
-        }));
-}
 
 gulp.task('clean', () => {
     return del.sync([config.outputDir]);
@@ -62,7 +51,14 @@ gulp.task('lint', () => {
 });
 
 gulp.task('test', () => {
-    return unitTests();
+    return gulp.src(config.specs)
+        .pipe(mocha({
+            ui: 'bdd',
+            reporter: 'spec',
+            require: [
+                '@babel/register'
+            ]
+        }));
 });
 
 gulp.task('watch', () => {

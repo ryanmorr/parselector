@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import parse from '../../src/css-selector-parser';
+import parse from '../../src/parse';
 
-describe('css-selector-parser/simple', () => {
+describe('parse/simple', () => {
     it('should tokenize the universal selector', () => {
         expect(parse('*')).to.deep.equal(
             [

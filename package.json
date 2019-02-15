@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "license": "Unlicense",
   "homepage": "https://github.com/ryanmorr/css-selector-parser",
-  "main": "dist/css-selector-parser.min.js",
+  "main": "dist/parse.min.js",
   "author": "Ryan Morr",
   "repository": {
     "type": "git",
