@@ -181,4 +181,36 @@ describe('css-selector-parser/combinators', () => {
             ]
         );
     });
+
+    it('should tokenize combinators with no whitespace', () => {
+        expect(parse('div+span~em>i')).to.deep.equal(
+            [
+                [
+                    {
+                        nodeName: 'div',
+                        attributes: [],
+                        pseudos: []
+                    },
+                    '+',
+                    {
+                        nodeName: 'span',
+                        attributes: [],
+                        pseudos: []
+                    },
+                    '~',
+                    {
+                        nodeName: 'em',
+                        attributes: [],
+                        pseudos: []
+                    },
+                    '>',
+                    {
+                        nodeName: 'i',
+                        attributes: [],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
 });
