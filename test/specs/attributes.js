@@ -11,7 +11,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '',
-                                value: ''
+                                value: '',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -30,7 +31,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -49,7 +51,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '~=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -68,7 +71,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '|=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -87,7 +91,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '^=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -106,7 +111,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '$=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -125,7 +131,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '*=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -144,7 +151,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -161,7 +169,28 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '$=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
+                            }
+                        ],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should support case-insensitive attribute selectors', () => {
+        expect(parse('[foo="bar" i]')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [
+                            {
+                                name: 'foo',
+                                operator: '=',
+                                value: 'bar',
+                                ignoreCase: true
                             }
                         ],
                         pseudos: []
@@ -180,7 +209,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '$=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -199,7 +229,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '*=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -218,7 +249,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: '[]()~=> ,\':.#'
+                                value: '[]()~=> ,\':.#',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -237,7 +269,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: '\nsome text\n'
+                                value: '\nsome text\n',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -256,7 +289,8 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: 'bar[baz]'
+                                value: 'bar[baz]',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []

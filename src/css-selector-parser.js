@@ -87,14 +87,16 @@ export default function parse(selector) {
                 token.attributes.push({
                     name: 'id',
                     operator: '=',
-                    value: getName()
+                    value: getName(),
+                    ignoreCase: false
                 });
             } else if (char === '.') {
                 reduceSelector(1);
                 token.attributes.push({
                     name: 'class',
                     operator: '~=',
-                    value: getName()
+                    value: getName(),
+                    ignoreCase: false
                 });
             } else if (char === '[') {
                 const data = selector.match(atttributeRe);
@@ -103,7 +105,8 @@ export default function parse(selector) {
                 token.attributes.push({
                     name,
                     operator: data[2] || '',
-                    value: unescapeCSS(data[4] || data[5] || '')
+                    value: unescapeCSS(data[4] || data[5] || ''),
+                    ignoreCase: !!data[6]
                 });
             } else if (char === ':') {
                 const data = selector.match(pseudoRe);

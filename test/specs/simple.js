@@ -39,7 +39,8 @@ describe('css-selector-parser/simple', () => {
                             {
                                 name: 'id',
                                 operator: '=',
-                                value: 'foo'
+                                value: 'foo',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -58,7 +59,8 @@ describe('css-selector-parser/simple', () => {
                             {
                                 name: 'class',
                                 operator: '~=',
-                                value: 'foo'
+                                value: 'foo',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -77,17 +79,20 @@ describe('css-selector-parser/simple', () => {
                             {
                                 name: 'class',
                                 operator: '~=',
-                                value: 'foo'
+                                value: 'foo',
+                                ignoreCase: false
                             },
                             {
                                 name: 'class',
                                 operator: '~=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             },
                             {
                                 name: 'class',
                                 operator: '~=',
-                                value: 'baz'
+                                value: 'baz',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -113,7 +118,8 @@ describe('css-selector-parser/simple', () => {
                             {
                                 name: 'id',
                                 operator: '=',
-                                value: 'foo'
+                                value: 'foo',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
@@ -125,7 +131,8 @@ describe('css-selector-parser/simple', () => {
                             {
                                 name: 'class',
                                 operator: '~=',
-                                value: 'bar'
+                                value: 'bar',
+                                ignoreCase: false
                             }
                         ],
                         pseudos: []
