@@ -73,7 +73,7 @@ describe('css-selector-parser/pseudos', () => {
     });
 
     it('should support reserved selector characters within a pseudo value', () => {
-        expect(parse(':foo([(])~=> ,\':.#)')).to.deep.equal(
+        expect(parse(':foo([(])~=>+"" ,\':.#)')).to.deep.equal(
             [
                 [
                     {
@@ -81,7 +81,7 @@ describe('css-selector-parser/pseudos', () => {
                         pseudos: [
                             {
                                 name: 'foo',
-                                value: '[(])~=> ,\':.#'
+                                value: '[(])~=>+"" ,\':.#'
                             }
                         ]
                     }
