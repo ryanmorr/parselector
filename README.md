@@ -16,10 +16,12 @@ npm install @ryanmorr/css-selector-parser
 
 ## Usage
 
+Provide a selector string and get a two-dimensional array composed of each selector group in the first array and the tokens for a selector sequence in the second array.
+
 ``` javascript
 import parse from '@ryanmorr/css-selector-parser';
 
-parse('#foo[attr=value] > div:empty, .foo.bar + [attr $= "value" i]:not(.baz[qux])');
+parse('#foo[attr=value] > div:empty, .foo.bar + [attr$="value" i]:not(.baz[qux])');
 ```
 
 Generates the following structure:
