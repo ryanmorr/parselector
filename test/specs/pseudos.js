@@ -73,7 +73,7 @@ describe('css-selector-parser/pseudos', () => {
     });
 
     it('should handle reserved selector characters within a pseudo value', () => {
-        expect(parse(':foo([]()~=> ,\':.#)')).to.deep.equal(
+        expect(parse(':foo([(])~=> ,\':.#)')).to.deep.equal(
             [
                 [
                     {
@@ -81,7 +81,7 @@ describe('css-selector-parser/pseudos', () => {
                         pseudos: [
                             {
                                 name: 'foo',
-                                value: '[]()~=> ,\':.#'
+                                value: '[(])~=> ,\':.#'
                             }
                         ]
                     }
@@ -109,7 +109,7 @@ describe('css-selector-parser/pseudos', () => {
     });
 
     it('should handle pseudo values containing a selector string', () => {
-        expect(parse(':not(div#foo.bar.baz[foo=bar][foo $= "bar"]:foo:bar("baz"))')).to.deep.equal(
+        expect(parse(':not(div#foo.bar.baz[foo=bar][foo $= "bar"]:foo(bar):baz("qux"))')).to.deep.equal(
             [
                 [
                     {
@@ -117,7 +117,7 @@ describe('css-selector-parser/pseudos', () => {
                         pseudos: [
                             {
                                 name: 'not',
-                                value: 'div#foo.bar.baz[foo=bar][foo $= "bar"]:foo:bar("baz")'
+                                value: 'div#foo.bar.baz[foo=bar][foo $= "bar"]:foo(bar):baz("qux")'
                             }
                         ]
                     }

@@ -2,9 +2,10 @@
 
 const cache = Object.create(null);
 const nameRe = /^(?:\\.|[\w\-\u00c0-\uFFFF])+/;
-const escapeRe = /\\([\da-f]{1,6}\s?|(\s)|.)/ig;
+const escapeRe = /\\(?:([0-9a-f]{1,6} ?)|(.))/ig;
+const pseudoRe = /:((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?:\((['"]?)((?:\([^\)]+\)|[^\(\)]*)+)\2\))?/;
 /* eslint-disable-next-line max-len */
-const atttributeRe = /^\s*((?:\\.|[\w\u00c0-\uFFFF\-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF\-])*)|)|)\s*(i)?\]/;
+const atttributeRe = /^\[((?:\\.|[\w\u00c0-\uFFFF\-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF\-])*)|)|)\s*(i)?\]/;
 
 export default function parse(selector) {
     selector = selector.trim();
@@ -34,22 +35,12 @@ export default function parse(selector) {
         return c === ' ' || c === '\n' || c === '\t' || c === '\f' || c === '\r';
     }
 
-    function isEscaped(pos) {
-        let slashCount = 0;
-        while (selector.charAt(--pos) === '\\') slashCount++;
-        return (slashCount & 1) === 1;
-    }
-
-    // Adapted from https://github.com/jquery/sizzle/blob/master/src/sizzle.js#L139
     function unescapeCSS(str) {
-        return str.replace(escapeRe, (all, escaped, escapedWhitespace) => {
-            const high = '0x' + escaped - 0x10000;
-            if (Number.isNaN(high) || escapedWhitespace) {
-                return escaped;
-            } else if (high < 0) {
-                return String.fromCharCode(high + 0x10000);
+        return str.replace(escapeRe, (match, hex, char) => {
+            if (hex) {
+                return String.fromCharCode(parseInt(hex, 16));
             }
-            return String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
+            return char;
         });
     }
 
@@ -106,7 +97,6 @@ export default function parse(selector) {
                     value: getName()
                 });
             } else if (char === '[') {
-                reduceSelector(1);
                 const data = selector.match(atttributeRe);
                 reduceSelector(data[0].length);
                 const name = unescapeCSS(data[1]).toLowerCase();
@@ -116,24 +106,13 @@ export default function parse(selector) {
                     value: unescapeCSS(data[4] || data[5] || '')
                 });
             } else if (char === ':') {
-                reduceSelector(1);
-                const name = getName().toLowerCase();
-                let value = '';
-                if (selector.charAt(0) === '(') {
-                    let pos = 1, counter = 1;
-                    for (; counter > 0 && pos < selector.length; pos++) {
-                        if (selector.charAt(pos) === '(' && !isEscaped(pos)) counter++;
-                        else if (selector.charAt(pos) === ')' && !isEscaped(pos)) counter--;
-                    }
-                    value = selector.substring(1, pos - 1);
-                    reduceSelector(pos);
-                    const quote = value.charAt(0);
-                    if (quote === value.slice(-1) && (quote === '"' || quote === '\'')) {
-                        value = value.slice(1, -1);
-                    }
-                    value = unescapeCSS(value);
-                }
-                token.pseudos.push({name, value});
+                const data = selector.match(pseudoRe);
+                reduceSelector(data[0].length);
+                const name = unescapeCSS(data[1]).toLowerCase();
+                token.pseudos.push({
+                    name,
+                    value: unescapeCSS(data[3] || '')
+                });
             } else if (nameRe.test(selector)) {
                 token.nodeName = getName().toLowerCase();
             }
