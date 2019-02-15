@@ -15,7 +15,7 @@ import buffer from 'vinyl-buffer';
 const banner = `/*! ${pkg.name} v${pkg.version} | ${pkg.homepage} */\n`;
 
 const config = {
-    name: 'cssSelectorParser',
+    name: 'parse',
     files: './src/**/*.js',
     entryFile: './src/css-selector-parser.js',
     outputFile: 'css-selector-parser.js',
