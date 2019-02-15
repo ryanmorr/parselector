@@ -1,6 +1,6 @@
 {
   "name": "@ryanmorr/css-selector-parser",
-  "description": "A superior alternative to object literals for basic hash maps",
+  "description": "Tokenize a CSS selector string",
   "version": "0.1.0",
   "license": "Unlicense",
   "homepage": "https://github.com/ryanmorr/css-selector-parser",
