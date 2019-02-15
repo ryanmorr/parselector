@@ -135,7 +135,7 @@ describe('css-selector-parser/attributes', () => {
         );
     });
 
-    it('should handle quotes in an attribute selector', () => {
+    it('should support quotes in an attribute selector', () => {
         expect(parse('[foo="bar"]')).to.deep.equal(
             [
                 [
@@ -171,7 +171,7 @@ describe('css-selector-parser/attributes', () => {
         );
     });
 
-    it('should handle spaces in an attribute selector', () => {
+    it('should support spaces in an attribute selector', () => {
         expect(parse('[foo $=  bar]')).to.deep.equal(
             [
                 [
@@ -190,7 +190,7 @@ describe('css-selector-parser/attributes', () => {
         );
     });
 
-    it('should handle quoted attributes with spaces', () => {
+    it('should support quoted attributes with spaces', () => {
         expect(parse('[foo *=  "bar"]')).to.deep.equal(
             [
                 [
@@ -209,7 +209,7 @@ describe('css-selector-parser/attributes', () => {
         );
     });
 
-    it('should handle reserved selector characters within an attribute value', () => {
+    it('should support reserved selector characters within an attribute value', () => {
         expect(parse('[foo="[]()~=> ,\':.#"]')).to.deep.equal(
             [
                 [
@@ -228,7 +228,7 @@ describe('css-selector-parser/attributes', () => {
         );
     });
 
-    it('should handle attribute values containing a newline character', () => {
+    it('should support attribute values containing a newline character', () => {
         expect(parse('[foo="\nsome text\n"]')).to.deep.equal(
             [
                 [
@@ -247,7 +247,7 @@ describe('css-selector-parser/attributes', () => {
         );
     });
 
-    it('should handle attributes with escaped characters', () => {
+    it('should support attributes with escaped characters', () => {
         expect(parse('[foo=bar\\[baz\\]]')).to.deep.equal(
             [
                 [
