@@ -89,4 +89,22 @@ describe('css-selector-parser/pseudos', () => {
             ]
         );
     });
+
+    it('should handle pseudo value with escaped characters', () => {
+        expect(parse(':foo(\\(bar\\))')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [],
+                        pseudos: [
+                            {
+                                name: 'foo',
+                                value: '(bar)'
+                            }
+                        ]
+                    }
+                ]
+            ]
+        );
+    });
 });
