@@ -172,7 +172,45 @@ describe('css-selector-parser/attributes', () => {
     });
 
     it('should handle spaces in an attribute selector', () => {
-        expect(parse('[foo =  bar]')).to.deep.equal(
+        expect(parse('[foo $=  bar]')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [
+                            {
+                                name: 'foo',
+                                operator: '$=',
+                                value: 'bar'
+                            }
+                        ],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should handle quoted attribute with spaces', () => {
+        expect(parse('[foo *=  "bar"]')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [
+                            {
+                                name: 'foo',
+                                operator: '*=',
+                                value: 'bar'
+                            }
+                        ],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should handle reserved selector characters within an attribute value', () => {
+        expect(parse('[foo="[]()~=> ,\':.#"]')).to.deep.equal(
             [
                 [
                     {
@@ -180,7 +218,45 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: 'bar'
+                                value: '[]()~=> ,\':.#'
+                            }
+                        ],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should handle attribute value containing a newline character', () => {
+        expect(parse('[foo="\nsome text\n"]')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [
+                            {
+                                name: 'foo',
+                                operator: '=',
+                                value: '\nsome text\n'
+                            }
+                        ],
+                        pseudos: []
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should handle attribute with escaped characters', () => {
+        expect(parse('[foo=bar\\[baz\\]]')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [
+                            {
+                                name: 'foo',
+                                operator: '=',
+                                value: 'bar[baz]'
                             }
                         ],
                         pseudos: []
