@@ -241,7 +241,7 @@ describe('css-selector-parser/attributes', () => {
     });
 
     it('should support reserved selector characters within an attribute value', () => {
-        expect(parse('[foo="[]()~=> ,\':.#"]')).to.deep.equal(
+        expect(parse('[foo="[(])~=>+"" ,\':.#"]')).to.deep.equal(
             [
                 [
                     {
@@ -249,7 +249,7 @@ describe('css-selector-parser/attributes', () => {
                             {
                                 name: 'foo',
                                 operator: '=',
-                                value: '[]()~=> ,\':.#',
+                                value: '[(])~=>+"" ,\':.#',
                                 ignoreCase: false
                             }
                         ],
