@@ -37,4 +37,38 @@ describe('css-selector-parser/pseudos', () => {
             ]
         );
     });
+
+    it('should handle quotes within a pseudo value', () => {
+        expect(parse(':contains("foo")')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [],
+                        pseudos: [
+                            {
+                                name: 'contains',
+                                value: 'foo'
+                            }
+                        ]
+                    }
+                ]
+            ]
+        );
+
+        expect(parse(':contains(\'foo\')')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [],
+                        pseudos: [
+                            {
+                                name: 'contains',
+                                value: 'foo'
+                            }
+                        ]
+                    }
+                ]
+            ]
+        );
+    });
 });
