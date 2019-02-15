@@ -71,4 +71,22 @@ describe('css-selector-parser/pseudos', () => {
             ]
         );
     });
+
+    it('should handle reserved selector characters within an attribute value', () => {
+        expect(parse(':foo([]()~=> ,\':.#)')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [],
+                        pseudos: [
+                            {
+                                name: 'foo',
+                                value: '[]()~=> ,\':.#'
+                            }
+                        ]
+                    }
+                ]
+            ]
+        );
+    });
 });
