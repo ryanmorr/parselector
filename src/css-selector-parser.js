@@ -6,27 +6,6 @@ const escapeRe = /\\([\da-f]{1,6}\s?|(\s)|.)/ig;
 /* eslint-disable-next-line max-len */
 const atttributeRe = /^\s*((?:\\.|[\w\u00c0-\uFFFF\-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF\-])*)|)|)\s*(i)?\]/;
 
-// Adapted from https://github.com/jquery/sizzle/blob/master/src/sizzle.js#L139
-function unescapeCSS(str) {
-    return str.replace(escapeRe, (all, escaped, escapedWhitespace) => {
-        const high = '0x' + escaped - 0x10000;
-        if (Number.isNaN(high) || escapedWhitespace) {
-            return escaped;
-        } else if (high < 0) {
-            return String.fromCharCode(high + 0x10000);
-        }
-        return String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
-    });
-}
-
-function isWhitespace(c) {
-    return c === ' ' || c === '\n' || c === '\t' || c === '\f' || c === '\r';
-}
-
-function isQuote(c) {
-    return c === '"' || c === '\'';
-}
-
 export default function parse(selector) {
     selector = selector.trim();
     if (selector in cache) {
@@ -51,10 +30,27 @@ export default function parse(selector) {
         reduceSelector(start);
     }
 
+    function isWhitespace(c) {
+        return c === ' ' || c === '\n' || c === '\t' || c === '\f' || c === '\r';
+    }
+
     function isEscaped(pos) {
         let slashCount = 0;
         while (selector.charAt(--pos) === '\\') slashCount++;
         return (slashCount & 1) === 1;
+    }
+
+    // Adapted from https://github.com/jquery/sizzle/blob/master/src/sizzle.js#L139
+    function unescapeCSS(str) {
+        return str.replace(escapeRe, (all, escaped, escapedWhitespace) => {
+            const high = '0x' + escaped - 0x10000;
+            if (Number.isNaN(high) || escapedWhitespace) {
+                return escaped;
+            } else if (high < 0) {
+                return String.fromCharCode(high + 0x10000);
+            }
+            return String.fromCharCode(high >> 10 | 0xD800, high & 0x3FF | 0xDC00);
+        });
     }
 
     function resetToken() {
@@ -131,8 +127,8 @@ export default function parse(selector) {
                     }
                     value = selector.substring(1, pos - 1);
                     reduceSelector(pos);
-                    const quot = value.charAt(0);
-                    if (quot === value.slice(-1) && isQuote(quot)) {
+                    const quote = value.charAt(0);
+                    if (quote === value.slice(-1) && (quote === '"' || quote === '\'')) {
                         value = value.slice(1, -1);
                     }
                     value = unescapeCSS(value);
