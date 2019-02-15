@@ -38,7 +38,7 @@ describe('css-selector-parser/pseudos', () => {
         );
     });
 
-    it('should handle quotes within a pseudo value', () => {
+    it('should handle quoted pseudo values', () => {
         expect(parse(':contains("foo")')).to.deep.equal(
             [
                 [
@@ -72,7 +72,7 @@ describe('css-selector-parser/pseudos', () => {
         );
     });
 
-    it('should handle reserved selector characters within an attribute value', () => {
+    it('should handle reserved selector characters within a pseudo value', () => {
         expect(parse(':foo([]()~=> ,\':.#)')).to.deep.equal(
             [
                 [
@@ -90,7 +90,7 @@ describe('css-selector-parser/pseudos', () => {
         );
     });
 
-    it('should handle pseudo value with escaped characters', () => {
+    it('should handle pseudo values with escaped characters', () => {
         expect(parse(':foo(\\(bar\\))')).to.deep.equal(
             [
                 [
@@ -108,7 +108,7 @@ describe('css-selector-parser/pseudos', () => {
         );
     });
 
-    it('should handle pseudo value containing a selector string', () => {
+    it('should handle pseudo values containing a selector string', () => {
         expect(parse(':not(div#foo.bar.baz[foo=bar][foo $= "bar"]:foo:bar("baz"))')).to.deep.equal(
             [
                 [
