@@ -1,5 +1,6 @@
 // Adapted from https://github.com/fb55/css-what
 
+const cache = Object.create(null);
 const nameRe = /^(?:\\.|[\w\-\u00c0-\uFFFF])+/;
 const escapeRe = /\\([\da-f]{1,6}\s?|(\s)|.)/ig;
 /* eslint-disable-next-line max-len */
@@ -27,6 +28,11 @@ function isQuote(c) {
 }
 
 export default function parse(selector) {
+    selector = selector.trim();
+    if (selector in cache) {
+        return cache[selector];
+    }
+
     const groups = [];
     let tokens = [], hasWhitespace = false, token;
 
@@ -59,8 +65,6 @@ export default function parse(selector) {
     }
 
     resetToken();
-    selector = selector.trim();
-
     while (selector !== '') {
         const char = selector.charAt(0);
         if (isWhitespace(char)) {
@@ -141,5 +145,6 @@ export default function parse(selector) {
     }
     tokens.push(token);
     groups.push(tokens);
+    cache[selector] = groups;
     return groups;
 }
