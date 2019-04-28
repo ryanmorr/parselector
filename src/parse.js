@@ -3,9 +3,9 @@
 const cache = Object.create(null);
 const nameRe = /^(?:\\.|[\w\-\u00c0-\uFFFF])+/;
 const escapeRe = /\\(?:([0-9a-f]{1,6} ?)|(.))/ig;
-const pseudoRe = /:((?:[\w\u00c0-\uFFFF\-]|\\.)+)(?:\((['"]?)((?:\([^\)]+\)|[^\(\)]*)+)\2\))?/;
+const pseudoRe = /:((?:[\w\u00c0-\uFFFF-]|\\.)+)(?:\((['"]?)((?:\([^)]+\)|[^()]*)+)\2\))?/;
 /* eslint-disable-next-line max-len */
-const atttributeRe = /^\[((?:\\.|[\w\u00c0-\uFFFF\-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF\-])*)|)|)\s*(i)?\]/;
+const atttributeRe = /^\[((?:\\.|[\w\u00c0-\uFFFF-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF-])*)|)|)\s*(i)?\]/;
 
 export default function parse(selector) {
     selector = selector.trim();
