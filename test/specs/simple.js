@@ -101,44 +101,4 @@ describe('parse/simple', () => {
             ]
         );
     });
-
-    it('should tokenize selector groups', () => {
-        expect(parse('div, #foo, .bar')).to.deep.equal(
-            [
-                [
-                    {
-                        nodeName: 'div',
-                        attributes: [],
-                        pseudos: []
-                    }
-                ],
-                [
-                    {
-                        attributes: [
-                            {
-                                name: 'id',
-                                operator: '=',
-                                value: 'foo',
-                                ignoreCase: false
-                            }
-                        ],
-                        pseudos: []
-                    }
-                ],
-                [
-                    {
-                        attributes: [
-                            {
-                                name: 'class',
-                                operator: '~=',
-                                value: 'bar',
-                                ignoreCase: false
-                            }
-                        ],
-                        pseudos: []
-                    }
-                ]
-            ]
-        );
-    });
 });
