@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import parse from '../../src/parse';
+import parse from '../../src/parse.js';
 
 describe('parse/pseudos', () => {
     it('should tokenize pseudo-class selectors', () => {

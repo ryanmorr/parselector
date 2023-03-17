@@ -3,40 +3,45 @@
   "description": "Tokenize a CSS selector string",
   "version": "0.1.0",
   "license": "Unlicense",
-  "homepage": "https://github.com/ryanmorr/css-selector-parser",
-  "main": "dist/parse.min.js",
   "author": "Ryan Morr",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/ryanmorr/css-selector-parser.git"
+  "homepage": "https://github.com/ryanmorr/css-selector-parser",
+  "repository": "github:ryanmorr/css-selector-parser",
+  "bugs": "https://github.com/ryanmorr/css-selector-parser/issues",
+  "keywords": [
+    "javascript",
+    "css",
+    "parser",
+    "css selector"
+  ],
+  "type": "module",
+  "main": "dist/cjs/parse.js",
+  "module": "dist/esm/parse.js",
+  "browser": "dist/umd/parse.js",
+  "exports": {
+    ".": {
+      "browser": "./dist/umd/parse.js",
+      "import": "./dist/esm/parse.js",
+      "require": "./dist/cjs/parse.js"
+    }
   },
-  "bugs": {
-    "url": "https://github.com/ryanmorr/css-selector-parser/issues"
-  },
-  "publishConfig": {
-    "access": "public"
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "lint": "eslint src/** test/specs/**",
+    "test": "mocha test/specs/**/*.js --reporter spec",
+    "build": "rollup -c"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.1",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "babel-eslint": "^9.0.0",
-    "babel-plugin-add-module-exports": "^1.0.0",
-    "babelify": "^10.0.0",
-    "browserify": "^16.2.2",
-    "chai": "^4.1.2",
-    "del": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-eslint": "^5.0.0",
-    "gulp-header": "^2.0.5",
-    "gulp-mocha": "^6.0.0",
-    "gulp-rename": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^3.0.1",
-    "mocha": "^5.2.0",
-    "sinon": "^6.2.0",
-    "vinyl-buffer": "^1.0.1",
-    "vinyl-source-stream": "^2.0.0",
-    "watchify": "^3.11.0"
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
+    "chai": "^4.3.7",
+    "eslint": "^8.33.0",
+    "mocha": "^10.2.0",
+    "rollup": "^3.14.0",
+    "rollup-plugin-generate-package-json": "^3.2.0",
+    "sinon": "^15.0.1",
+    "terser": "^5.16.3"
   }
 }
