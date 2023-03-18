@@ -10,7 +10,7 @@
 
 Download the [CJS](https://github.com/ryanmorr/parselector/raw/master/dist/cjs/parselector.js), [ESM](https://github.com/ryanmorr/parselector/raw/master/dist/esm/parselector.js), [UMD](https://github.com/ryanmorr/parselector/raw/master/dist/umd/parselector.js) versions or install via NPM:
 
-``` sh
+```sh
 npm install @ryanmorr/parselector
 ```
 
@@ -18,7 +18,7 @@ npm install @ryanmorr/parselector
 
 Provide a selector string and get a two-dimensional array composed of each selector group in the first array and the tokens for a selector sequence in the second array.
 
-``` javascript
+```javascript
 import parselector from '@ryanmorr/parselector';
 
 parselector('#foo[attr$="value" i] > div:not(.bar), .baz span::before');
@@ -26,7 +26,7 @@ parselector('#foo[attr$="value" i] > div:not(.bar), .baz span::before');
 
 Generates the following AST structure:
 
-``` javascript
+```javascript
 [
     [
         {
