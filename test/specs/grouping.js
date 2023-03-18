@@ -148,7 +148,11 @@ describe('grouping', () => {
     });
     
     it('should tokenize selector groups with different whitespace', () => {
-        expect(parselector('div, #foo , .bar      ,[attr],   :pseudo')).to.deep.equal(
+        const selector = `
+            div, #foo , .bar      ,[attr],   :pseudo,
+            ::before
+        `;
+        expect(parselector(selector)).to.deep.equal(
             [
                 [
                     {
@@ -210,6 +214,13 @@ describe('grouping', () => {
                             }
                         ],
                         pseudoElement: null
+                    }
+                ],
+                [
+                    {
+                        attributes: [],
+                        pseudoClasses: [],
+                        pseudoElement: 'before'
                     }
                 ]
             ]
