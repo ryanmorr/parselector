@@ -11,45 +11,46 @@ export default function parselector(selector) {
     if (cache.has(selector)) {
         return cache.get(selector);
     }
-
+    let token;
+    let tokens = [];
+    let hasWhitespace = false;
     const groups = [];
-    let tokens = [], hasWhitespace = false, token;
 
-    function getName() {
+    const getName = () => {
         const name = selector.match(NAME_RE)[0];
         reduceSelector(name.length);
         return unescapeCSS(name);
-    }
+    };
 
-    function reduceSelector(index) {
+    const reduceSelector = (index) => {
         selector = selector.substring(index);
-    }
+    };
 
-    function stripWhitespace(start) {
+    const stripWhitespace = (start) => {
         while (isWhitespace(selector.charAt(start))) start++;
         reduceSelector(start);
-    }
+    };
 
-    function isWhitespace(c) {
+    const isWhitespace = (c) => {
         return c === ' ' || c === '\n' || c === '\t' || c === '\f' || c === '\r';
-    }
+    };
 
-    function unescapeCSS(str) {
+    const unescapeCSS = (str) => {
         return str.replace(UNESCAPE_RE, (match, hex, char) => {
             if (hex) {
                 return String.fromCharCode(parseInt(hex, 16));
             }
             return char;
         });
-    }
+    };
 
-    function resetToken() {
+    const resetToken = () => {
         token = {
             attributes: [],
             pseudoClasses: [],
             pseudoElement: null
         };
-    }
+    };
 
     resetToken();
     while (selector !== '') {
