@@ -3,13 +3,14 @@ import parselector from '../../src/parselector.js';
 
 describe('grouping', () => {
     it('should tokenize selector groups', () => {
-        expect(parselector('div, #foo, .bar, [attr], :pseudo')).to.deep.equal(
+        expect(parselector('div, #foo, .bar, [attr], :pseudo, ::first-letter')).to.deep.equal(
             [
                 [
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -22,7 +23,8 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -35,7 +37,8 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -48,18 +51,27 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'pseudo',
                                 value: ''
                             }
-                        ]
+                        ],
+                        pseudoElement: null
+                    }
+                ],
+                [
+                    {
+                        attributes: [],
+                        pseudoClasses: [],
+                        pseudoElement: 'first-letter'
                     }
                 ]
             ]
@@ -73,7 +85,8 @@ describe('grouping', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -86,7 +99,8 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -99,7 +113,8 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -112,18 +127,20 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'pseudo',
                                 value: ''
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -137,7 +154,8 @@ describe('grouping', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -150,7 +168,8 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -163,7 +182,8 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
@@ -176,18 +196,20 @@ describe('grouping', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ],
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'pseudo',
                                 value: ''
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]

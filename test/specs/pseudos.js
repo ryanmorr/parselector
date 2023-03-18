@@ -1,19 +1,20 @@
 import { expect } from 'chai';
 import parselector from '../../src/parselector.js';
 
-describe('pseudos', () => {
+describe('pseudoClasses', () => {
     it('should tokenize pseudo-class selectors', () => {
         expect(parselector(':checked')).to.deep.equal(
             [
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'checked',
                                 value: ''
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -26,12 +27,13 @@ describe('pseudos', () => {
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'nth-child',
                                 value: 'even'
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -44,12 +46,13 @@ describe('pseudos', () => {
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'contains',
                                 value: 'foo'
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -60,12 +63,13 @@ describe('pseudos', () => {
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'contains',
                                 value: 'foo'
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -78,12 +82,13 @@ describe('pseudos', () => {
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'foo',
                                 value: '[(])~=>+"" ,\':.#'
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -96,12 +101,13 @@ describe('pseudos', () => {
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'foo',
                                 value: '(bar)'
                             }
-                        ]
+                        ],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -114,12 +120,27 @@ describe('pseudos', () => {
                 [
                     {
                         attributes: [],
-                        pseudos: [
+                        pseudoClasses: [
                             {
                                 name: 'not',
                                 value: 'div#foo.bar.baz[foo=bar][foo $= "bar"]:foo(bar):baz("qux")'
                             }
-                        ]
+                        ],
+                        pseudoElement: null
+                    }
+                ]
+            ]
+        );
+    });
+
+    it('should tokenize pseudo-element selectors', () => {
+        expect(parselector('::before')).to.deep.equal(
+            [
+                [
+                    {
+                        attributes: [],
+                        pseudoClasses: [],
+                        pseudoElement: 'before'
                     }
                 ]
             ]

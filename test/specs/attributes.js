@@ -15,7 +15,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -35,7 +36,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -55,7 +57,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -75,7 +78,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -95,7 +99,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -115,7 +120,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -135,7 +141,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -155,7 +162,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -173,7 +181,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -193,7 +202,8 @@ describe('attributes', () => {
                                 ignoreCase: true
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -213,7 +223,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -233,7 +244,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -253,7 +265,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -273,7 +286,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -293,7 +307,8 @@ describe('attributes', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]

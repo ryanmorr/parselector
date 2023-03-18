@@ -9,13 +9,15 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     ' ',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -29,13 +31,15 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '>',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -49,13 +53,15 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '+',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -69,13 +75,15 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '~',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -89,13 +97,15 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '<',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -110,7 +120,8 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -125,7 +136,8 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -140,7 +152,8 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -155,7 +168,8 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -169,13 +183,15 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     ' ',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -189,25 +205,29 @@ describe('combinators', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '+',
                     {
                         nodeName: 'span',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '~',
                     {
                         nodeName: 'em',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     },
                     '>',
                     {
                         nodeName: 'i',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]

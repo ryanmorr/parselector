@@ -9,7 +9,8 @@ describe('simple', () => {
                     {
                         nodeName: '*',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -23,7 +24,8 @@ describe('simple', () => {
                     {
                         nodeName: 'div',
                         attributes: [],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -43,7 +45,8 @@ describe('simple', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -63,7 +66,8 @@ describe('simple', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]
@@ -95,7 +99,8 @@ describe('simple', () => {
                                 ignoreCase: false
                             }
                         ],
-                        pseudos: []
+                        pseudoClasses: [],
+                        pseudoElement: null
                     }
                 ]
             ]

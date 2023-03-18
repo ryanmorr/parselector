@@ -1,23 +1,22 @@
 // Adapted from https://github.com/fb55/css-what
 
-const cache = Object.create(null);
-const nameRe = /^(?:\\.|[\w\-\u00c0-\uFFFF])+/;
-const escapeRe = /\\(?:([0-9a-f]{1,6} ?)|(.))/ig;
-const pseudoRe = /:((?:[\w\u00c0-\uFFFF-]|\\.)+)(?:\((['"]?)((?:\([^)]+\)|[^()]*)+)\2\))?/;
-/* eslint-disable-next-line max-len */
-const atttributeRe = /^\[((?:\\.|[\w\u00c0-\uFFFF-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF-])*)|)|)\s*(i)?\]/;
+const cache = new Map();
+const NAME_RE = /^(?:\\.|[\w\-\u00c0-\uFFFF])+/;
+const UNESCAPE_RE = /\\(?:([0-9a-f]{1,6} ?)|(.))/ig;
+const PSEUDO_CLASS_RE = /:((?:[\w\u00c0-\uFFFF-]|\\.)+)(?:\((['"]?)((?:\([^)]+\)|[^()]*)+)\2\))?/;
+const ATTRIBUTE_RE = /^\[((?:\\.|[\w\u00c0-\uFFFF-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF-])*)|)|)\s*(i)?\]/;
 
 export default function parselector(selector) {
     selector = selector.trim();
-    if (selector in cache) {
-        return cache[selector];
+    if (cache.has(selector)) {
+        return cache.get(selector);
     }
 
     const groups = [];
     let tokens = [], hasWhitespace = false, token;
 
     function getName() {
-        const name = selector.match(nameRe)[0];
+        const name = selector.match(NAME_RE)[0];
         reduceSelector(name.length);
         return unescapeCSS(name);
     }
@@ -36,7 +35,7 @@ export default function parselector(selector) {
     }
 
     function unescapeCSS(str) {
-        return str.replace(escapeRe, (match, hex, char) => {
+        return str.replace(UNESCAPE_RE, (match, hex, char) => {
             if (hex) {
                 return String.fromCharCode(parseInt(hex, 16));
             }
@@ -47,7 +46,8 @@ export default function parselector(selector) {
     function resetToken() {
         token = {
             attributes: [],
-            pseudos: []
+            pseudoClasses: [],
+            pseudoElement: null
         };
     }
 
@@ -58,7 +58,7 @@ export default function parselector(selector) {
             hasWhitespace = true;
             stripWhitespace(1);
         } else if (char === '>' || char === '<' || char === '~' || char === '+') {
-            if (token.nodeName || token.attributes.length > 0 || token.pseudos.length > 0) {
+            if (token.nodeName || token.attributes.length > 0 || token.pseudoClasses.length > 0) {
                 tokens.push(token);
             }
             tokens.push(char);
@@ -99,7 +99,7 @@ export default function parselector(selector) {
                     ignoreCase: false
                 });
             } else if (char === '[') {
-                const data = selector.match(atttributeRe);
+                const data = selector.match(ATTRIBUTE_RE);
                 reduceSelector(data[0].length);
                 const name = unescapeCSS(data[1]).toLowerCase();
                 token.attributes.push({
@@ -109,20 +109,25 @@ export default function parselector(selector) {
                     ignoreCase: !!data[6]
                 });
             } else if (char === ':') {
-                const data = selector.match(pseudoRe);
-                reduceSelector(data[0].length);
-                const name = unescapeCSS(data[1]).toLowerCase();
-                token.pseudos.push({
-                    name,
-                    value: unescapeCSS(data[3] || '')
-                });
-            } else if (nameRe.test(selector)) {
+                if (selector[1] === ':') {
+                    reduceSelector(2);
+                    token.pseudoElement = getName();
+                } else {
+                    const data = selector.match(PSEUDO_CLASS_RE);
+                    reduceSelector(data[0].length);
+                    const name = unescapeCSS(data[1]).toLowerCase();
+                    token.pseudoClasses.push({
+                        name,
+                        value: unescapeCSS(data[3] || '')
+                    });
+                }
+            } else if (NAME_RE.test(selector)) {
                 token.nodeName = getName().toLowerCase();
             }
         }
     }
     tokens.push(token);
     groups.push(tokens);
-    cache[selector] = groups;
+    cache.set(selector, groups);
     return groups;
 }
