@@ -1,12 +1,12 @@
 {
-  "name": "@ryanmorr/css-selector-parser",
-  "description": "Tokenize a CSS selector string",
+  "name": "@ryanmorr/parselector",
+  "description": "Parse a CSS selector string",
   "version": "0.1.0",
   "license": "Unlicense",
   "author": "Ryan Morr",
-  "homepage": "https://github.com/ryanmorr/css-selector-parser",
-  "repository": "github:ryanmorr/css-selector-parser",
-  "bugs": "https://github.com/ryanmorr/css-selector-parser/issues",
+  "homepage": "https://github.com/ryanmorr/parselector",
+  "repository": "github:ryanmorr/parselector",
+  "bugs": "https://github.com/ryanmorr/parselector/issues",
   "keywords": [
     "javascript",
     "css",
@@ -14,14 +14,14 @@
     "css selector"
   ],
   "type": "module",
-  "main": "dist/cjs/parse.js",
-  "module": "dist/esm/parse.js",
-  "browser": "dist/umd/parse.js",
+  "main": "dist/cjs/parselector.js",
+  "module": "dist/esm/parselector.js",
+  "browser": "dist/umd/parselector.js",
   "exports": {
     ".": {
-      "browser": "./dist/umd/parse.js",
-      "import": "./dist/esm/parse.js",
-      "require": "./dist/cjs/parse.js"
+      "browser": "./dist/umd/parselector.js",
+      "import": "./dist/esm/parselector.js",
+      "require": "./dist/cjs/parselector.js"
     }
   },
   "files": [

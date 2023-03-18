@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import parse from '../../src/parse.js';
+import parselector from '../../src/parselector.js';
 
-describe('parse/attributes', () => {
+describe('attributes', () => {
     it('should tokenize "[attr]" attribute selector', () => {
-        expect(parse('[foo]')).to.deep.equal(
+        expect(parselector('[foo]')).to.deep.equal(
             [
                 [
                     {
@@ -23,7 +23,7 @@ describe('parse/attributes', () => {
     });
 
     it('should tokenize "[attr=value]" attribute selector', () => {
-        expect(parse('[foo=bar]')).to.deep.equal(
+        expect(parselector('[foo=bar]')).to.deep.equal(
             [
                 [
                     {
@@ -43,7 +43,7 @@ describe('parse/attributes', () => {
     });
 
     it('should tokenize "[attr~=value]" attribute selector', () => {
-        expect(parse('[foo~=bar]')).to.deep.equal(
+        expect(parselector('[foo~=bar]')).to.deep.equal(
             [
                 [
                     {
@@ -63,7 +63,7 @@ describe('parse/attributes', () => {
     });
 
     it('should tokenize "[attr|=value]" attribute selector', () => {
-        expect(parse('[foo|=bar]')).to.deep.equal(
+        expect(parselector('[foo|=bar]')).to.deep.equal(
             [
                 [
                     {
@@ -83,7 +83,7 @@ describe('parse/attributes', () => {
     });
 
     it('should tokenize "[attr^=value]" attribute selector', () => {
-        expect(parse('[foo^=bar]')).to.deep.equal(
+        expect(parselector('[foo^=bar]')).to.deep.equal(
             [
                 [
                     {
@@ -103,7 +103,7 @@ describe('parse/attributes', () => {
     });
 
     it('should tokenize "[attr$=value]" attribute selector', () => {
-        expect(parse('[foo$=bar]')).to.deep.equal(
+        expect(parselector('[foo$=bar]')).to.deep.equal(
             [
                 [
                     {
@@ -123,7 +123,7 @@ describe('parse/attributes', () => {
     });
 
     it('should tokenize "[attr*=value]" attribute selector', () => {
-        expect(parse('[foo*=bar]')).to.deep.equal(
+        expect(parselector('[foo*=bar]')).to.deep.equal(
             [
                 [
                     {
@@ -143,7 +143,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support quotes in an attribute selector', () => {
-        expect(parse('[foo="bar"]')).to.deep.equal(
+        expect(parselector('[foo="bar"]')).to.deep.equal(
             [
                 [
                     {
@@ -161,7 +161,7 @@ describe('parse/attributes', () => {
             ]
         );
 
-        expect(parse('[foo$=\'bar\']')).to.deep.equal(
+        expect(parselector('[foo$=\'bar\']')).to.deep.equal(
             [
                 [
                     {
@@ -181,7 +181,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support case-insensitive attribute selectors', () => {
-        expect(parse('[foo="bar" i]')).to.deep.equal(
+        expect(parselector('[foo="bar" i]')).to.deep.equal(
             [
                 [
                     {
@@ -201,7 +201,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support spaces in an attribute selector', () => {
-        expect(parse('[foo $=  bar]')).to.deep.equal(
+        expect(parselector('[foo $=  bar]')).to.deep.equal(
             [
                 [
                     {
@@ -221,7 +221,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support quoted attributes with spaces', () => {
-        expect(parse('[foo *=  "bar"]')).to.deep.equal(
+        expect(parselector('[foo *=  "bar"]')).to.deep.equal(
             [
                 [
                     {
@@ -241,7 +241,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support reserved selector characters within an attribute value', () => {
-        expect(parse('[foo="[(])~=>+"" ,\':.#"]')).to.deep.equal(
+        expect(parselector('[foo="[(])~=>+"" ,\':.#"]')).to.deep.equal(
             [
                 [
                     {
@@ -261,7 +261,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support attribute values containing a newline character', () => {
-        expect(parse('[foo="\nsome text\n"]')).to.deep.equal(
+        expect(parselector('[foo="\nsome text\n"]')).to.deep.equal(
             [
                 [
                     {
@@ -281,7 +281,7 @@ describe('parse/attributes', () => {
     });
 
     it('should support attributes with escaped characters', () => {
-        expect(parse('[foo=bar\\[baz\\]]')).to.deep.equal(
+        expect(parselector('[foo=bar\\[baz\\]]')).to.deep.equal(
             [
                 [
                     {

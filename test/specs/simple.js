@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import parse from '../../src/parse.js';
+import parselector from '../../src/parselector.js';
 
-describe('parse/simple', () => {
+describe('simple', () => {
     it('should tokenize the universal selector', () => {
-        expect(parse('*')).to.deep.equal(
+        expect(parselector('*')).to.deep.equal(
             [
                 [
                     {
@@ -17,7 +17,7 @@ describe('parse/simple', () => {
     });
 
     it('should tokenize a tag selector', () => {
-        expect(parse('div')).to.deep.equal(
+        expect(parselector('div')).to.deep.equal(
             [
                 [
                     {
@@ -31,7 +31,7 @@ describe('parse/simple', () => {
     });
 
     it('should tokenize an ID selector', () => {
-        expect(parse('#foo')).to.deep.equal(
+        expect(parselector('#foo')).to.deep.equal(
             [
                 [
                     {
@@ -51,7 +51,7 @@ describe('parse/simple', () => {
     });
 
     it('should tokenize a single class selector', () => {
-        expect(parse('.foo')).to.deep.equal(
+        expect(parselector('.foo')).to.deep.equal(
             [
                 [
                     {
@@ -71,7 +71,7 @@ describe('parse/simple', () => {
     });
 
     it('should tokenize a multiple class selector', () => {
-        expect(parse('.foo.bar.baz')).to.deep.equal(
+        expect(parselector('.foo.bar.baz')).to.deep.equal(
             [
                 [
                     {

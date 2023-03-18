@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import parse from '../../src/parse.js';
+import parselector from '../../src/parselector.js';
 
-describe('parse/pseudos', () => {
+describe('pseudos', () => {
     it('should tokenize pseudo-class selectors', () => {
-        expect(parse(':checked')).to.deep.equal(
+        expect(parselector(':checked')).to.deep.equal(
             [
                 [
                     {
@@ -21,7 +21,7 @@ describe('parse/pseudos', () => {
     });
 
     it('should tokenize pseudo-class selectors with a value', () => {
-        expect(parse(':nth-child(even)')).to.deep.equal(
+        expect(parselector(':nth-child(even)')).to.deep.equal(
             [
                 [
                     {
@@ -39,7 +39,7 @@ describe('parse/pseudos', () => {
     });
 
     it('should support quoted pseudo values', () => {
-        expect(parse(':contains("foo")')).to.deep.equal(
+        expect(parselector(':contains("foo")')).to.deep.equal(
             [
                 [
                     {
@@ -55,7 +55,7 @@ describe('parse/pseudos', () => {
             ]
         );
 
-        expect(parse(':contains(\'foo\')')).to.deep.equal(
+        expect(parselector(':contains(\'foo\')')).to.deep.equal(
             [
                 [
                     {
@@ -73,7 +73,7 @@ describe('parse/pseudos', () => {
     });
 
     it('should support reserved selector characters within a pseudo value', () => {
-        expect(parse(':foo([(])~=>+"" ,\':.#)')).to.deep.equal(
+        expect(parselector(':foo([(])~=>+"" ,\':.#)')).to.deep.equal(
             [
                 [
                     {
@@ -91,7 +91,7 @@ describe('parse/pseudos', () => {
     });
 
     it('should support pseudo values with escaped characters', () => {
-        expect(parse(':foo(\\(bar\\))')).to.deep.equal(
+        expect(parselector(':foo(\\(bar\\))')).to.deep.equal(
             [
                 [
                     {
@@ -109,7 +109,7 @@ describe('parse/pseudos', () => {
     });
 
     it('should support pseudo values containing a selector string', () => {
-        expect(parse(':not(div#foo.bar.baz[foo=bar][foo $= "bar"]:foo(bar):baz("qux"))')).to.deep.equal(
+        expect(parselector(':not(div#foo.bar.baz[foo=bar][foo $= "bar"]:foo(bar):baz("qux"))')).to.deep.equal(
             [
                 [
                     {

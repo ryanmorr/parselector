@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import parse from '../../src/parse.js';
+import parselector from '../../src/parselector.js';
 
-describe('parse/grouping', () => {
+describe('grouping', () => {
     it('should tokenize selector groups', () => {
-        expect(parse('div, #foo, .bar, [attr], :pseudo')).to.deep.equal(
+        expect(parselector('div, #foo, .bar, [attr], :pseudo')).to.deep.equal(
             [
                 [
                     {
@@ -67,7 +67,7 @@ describe('parse/grouping', () => {
     });
     
     it('should tokenize selector groups with no whitespace', () => {
-        expect(parse('div,#foo,.bar,[attr],:pseudo')).to.deep.equal(
+        expect(parselector('div,#foo,.bar,[attr],:pseudo')).to.deep.equal(
             [
                 [
                     {
@@ -131,7 +131,7 @@ describe('parse/grouping', () => {
     });
     
     it('should tokenize selector groups with different whitespace', () => {
-        expect(parse('div, #foo , .bar      ,[attr],   :pseudo')).to.deep.equal(
+        expect(parselector('div, #foo , .bar      ,[attr],   :pseudo')).to.deep.equal(
             [
                 [
                     {

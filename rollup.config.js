@@ -9,11 +9,11 @@ export default async () => {
     const banner = `/*! ${pkg.name} v${pkg.version} | ${pkg.homepage} */`;
 
     return {
-        input: 'src/parse.js',
+        input: 'src/parselector.js',
         output: [
             {
                 banner,
-                name: 'parse',
+                name: 'parselector',
                 file: pkg.browser,
                 format: 'umd'
             },

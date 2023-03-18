@@ -7,7 +7,7 @@ const pseudoRe = /:((?:[\w\u00c0-\uFFFF-]|\\.)+)(?:\((['"]?)((?:\([^)]+\)|[^()]*
 /* eslint-disable-next-line max-len */
 const atttributeRe = /^\[((?:\\.|[\w\u00c0-\uFFFF-])+)\s*(?:(\S?=)\s*(?:(['"])([^]*?)\3|(#?(?:\\.|[\w\u00c0-\uFFFF-])*)|)|)\s*(i)?\]/;
 
-export default function parse(selector) {
+export default function parselector(selector) {
     selector = selector.trim();
     if (selector in cache) {
         return cache[selector];

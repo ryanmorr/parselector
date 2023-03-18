@@ -1,9 +1,9 @@
 import { expect } from 'chai';
-import parse from '../../src/parse.js';
+import parselector from '../../src/parselector.js';
 
-describe('parse/combinators', () => {
+describe('combinators', () => {
     it('should tokenize a descendant combinator', () => {
-        expect(parse('div span')).to.deep.equal(
+        expect(parselector('div span')).to.deep.equal(
             [
                 [
                     {
@@ -23,7 +23,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a child combinator', () => {
-        expect(parse('div > span')).to.deep.equal(
+        expect(parselector('div > span')).to.deep.equal(
             [
                 [
                     {
@@ -43,7 +43,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize an adjacent sibling combinator', () => {
-        expect(parse('div + span')).to.deep.equal(
+        expect(parselector('div + span')).to.deep.equal(
             [
                 [
                     {
@@ -63,7 +63,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a general sibling combinator', () => {
-        expect(parse('div ~ span')).to.deep.equal(
+        expect(parselector('div ~ span')).to.deep.equal(
             [
                 [
                     {
@@ -83,7 +83,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a parent combinator', () => {
-        expect(parse('div < span')).to.deep.equal(
+        expect(parselector('div < span')).to.deep.equal(
             [
                 [
                     {
@@ -103,7 +103,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a leading child combinator', () => {
-        expect(parse('> div')).to.deep.equal(
+        expect(parselector('> div')).to.deep.equal(
             [
                 [
                     '>',
@@ -118,7 +118,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a leading parent combinator', () => {
-        expect(parse('< div')).to.deep.equal(
+        expect(parselector('< div')).to.deep.equal(
             [
                 [
                     '<',
@@ -133,7 +133,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a leading adjacent sibling combinator', () => {
-        expect(parse('+ div')).to.deep.equal(
+        expect(parselector('+ div')).to.deep.equal(
             [
                 [
                     '+',
@@ -148,7 +148,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a leading general sibling combinator', () => {
-        expect(parse('~ div')).to.deep.equal(
+        expect(parselector('~ div')).to.deep.equal(
             [
                 [
                     '~',
@@ -163,7 +163,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize a descendant combinator with whitespace', () => {
-        expect(parse('div\t \n \tspan')).to.deep.equal(
+        expect(parselector('div\t \n \tspan')).to.deep.equal(
             [
                 [
                     {
@@ -183,7 +183,7 @@ describe('parse/combinators', () => {
     });
 
     it('should tokenize combinators with no whitespace', () => {
-        expect(parse('div+span~em>i')).to.deep.equal(
+        expect(parselector('div+span~em>i')).to.deep.equal(
             [
                 [
                     {
