@@ -45,7 +45,8 @@ Generates the following AST structure:
                     ignoreCase: true
                 }
             ],
-            pseudoClasses: []
+            pseudoClasses: [],
+            pseudoElement: null
         },
         '>',
         {
@@ -56,7 +57,8 @@ Generates the following AST structure:
                     name: 'not',
                     value: '.bar'
                 }
-            ]
+            ],
+            pseudoElement: null
         }
     ],
     [
@@ -70,7 +72,8 @@ Generates the following AST structure:
                     ignoreCase: false
                 }
             ],
-            pseudoClasses: []
+            pseudoClasses: [],
+            pseudoElement: null
         },
         ' ',
         {
