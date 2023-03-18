@@ -7,6 +7,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -26,6 +27,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -45,6 +47,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -62,6 +65,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -81,6 +85,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -100,6 +105,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -119,6 +125,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -138,6 +145,7 @@ describe('pseudoClasses', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [],
                         pseudoElement: 'before'

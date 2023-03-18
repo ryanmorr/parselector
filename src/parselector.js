@@ -46,6 +46,7 @@ export default function parselector(selector) {
 
     const resetToken = () => {
         token = {
+            nodeName: null,
             attributes: [],
             pseudoClasses: [],
             pseudoElement: null

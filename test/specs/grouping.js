@@ -15,6 +15,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'id',
@@ -29,6 +30,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'class',
@@ -43,6 +45,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'attr',
@@ -57,6 +60,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -69,6 +73,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [],
                         pseudoElement: 'first-letter'
@@ -91,6 +96,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'id',
@@ -105,6 +111,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'class',
@@ -119,6 +126,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'attr',
@@ -133,6 +141,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -164,6 +173,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'id',
@@ -178,6 +188,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'class',
@@ -192,6 +203,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'attr',
@@ -206,6 +218,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [
                             {
@@ -218,6 +231,7 @@ describe('grouping', () => {
                 ],
                 [
                     {
+                        nodeName: null,
                         attributes: [],
                         pseudoClasses: [],
                         pseudoElement: 'before'

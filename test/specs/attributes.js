@@ -7,6 +7,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -28,6 +29,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -49,6 +51,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -70,6 +73,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -91,6 +95,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -112,6 +117,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -133,6 +139,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -154,6 +161,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -173,6 +181,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -194,6 +203,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -215,6 +225,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -236,6 +247,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -257,6 +269,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -278,6 +291,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',
@@ -299,6 +313,7 @@ describe('attributes', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'foo',

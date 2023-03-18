@@ -37,6 +37,7 @@ describe('simple', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'id',
@@ -58,6 +59,7 @@ describe('simple', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'class',
@@ -79,6 +81,7 @@ describe('simple', () => {
             [
                 [
                     {
+                        nodeName: null,
                         attributes: [
                             {
                                 name: 'class',
