@@ -1,17 +1,17 @@
-# css-selector-parser
+# parselector
 
 [![Version Badge][version-image]][project-url]
-[![Build Status][build-image]][build-url]
 [![License][license-image]][license-url]
+[![Build Status][build-image]][build-url]
 
-> Tokenize a CSS selector string
+> Parse a CSS selector string
 
 ## Install
 
-Download the [development](http://github.com/ryanmorr/css-selector-parser/raw/master/dist/parse.js) or [minified](http://github.com/ryanmorr/css-selector-parser/raw/master/dist/parse.min.js) version, or install via NPM:
+Download the [CJS](https://github.com/ryanmorr/parselector/raw/master/dist/cjs/parselector.js), [ESM](https://github.com/ryanmorr/parselector/raw/master/dist/esm/parselector.js), [UMD](https://github.com/ryanmorr/parselector/raw/master/dist/umd/parselector.js) versions or install via NPM:
 
 ``` sh
-npm install @ryanmorr/css-selector-parser
+npm install @ryanmorr/parselector
 ```
 
 ## Usage
@@ -19,17 +19,18 @@ npm install @ryanmorr/css-selector-parser
 Provide a selector string and get a two-dimensional array composed of each selector group in the first array and the tokens for a selector sequence in the second array.
 
 ``` javascript
-import parse from '@ryanmorr/css-selector-parser';
+import parselector from '@ryanmorr/parselector';
 
-parse('#foo[attr=value] > div:empty, .foo.bar + [attr$="value" i]:not(.baz[qux])');
+parselector('#foo[attr$="value" i] > div:not(.bar), .baz span::before');
 ```
 
-Generates the following structure:
+Generates the following AST structure:
 
 ``` javascript
 [
     [
         {
+            nodeName: null,
             attributes: [
                 {
                     name: 'id',
@@ -39,59 +40,44 @@ Generates the following structure:
                 },
                 {
                     name: 'attr',
-                    operator: '=',
+                    operator: '$=',
                     value: 'value',
-                    ignoreCase: false
+                    ignoreCase: true
                 }
             ],
-            pseudos: []
+            pseudoClasses: []
         },
         '>',
         {
             nodeName: 'div',
             attributes: [],
-            pseudos: [
+            pseudoClasses: [
                 {
-                    name: 'empty',
-                    value: ''
+                    name: 'not',
+                    value: '.bar'
                 }
             ]
         }
     ],
     [
         {
+            nodeName: null,
             attributes: [
                 {
                     name: 'class',
                     operator: '~=',
-                    value: 'foo',
-                    ignoreCase: false
-                },
-                {
-                    name: 'class',
-                    operator: '~=',
-                    value: 'bar',
+                    value: 'baz',
                     ignoreCase: false
                 }
             ],
-            pseudos: []
+            pseudoClasses: []
         },
-        '+',
+        ' ',
         {
-            attributes: [
-                {
-                    name: 'attr',
-                    operator: '$=',
-                    value: 'value',
-                    ignoreCase: true
-                }
-            ],
-            pseudos: [
-                {
-                    name: 'not',
-                    value: '.baz[qux]'
-                }
-            ]
+            nodeName: 'span',
+            attributes: [],
+            pseudoClasses: [],
+            pseudoElement: 'before'
         }
     ]
 ]
@@ -101,9 +87,9 @@ Generates the following structure:
 
 This project is dedicated to the public domain as described by the [Unlicense](http://unlicense.org/).
 
-[project-url]: https://github.com/ryanmorr/css-selector-parser
-[version-image]: https://badge.fury.io/gh/ryanmorr%2Fcss-selector-parser.svg
-[build-url]: https://travis-ci.org/ryanmorr/css-selector-parser
-[build-image]: https://travis-ci.org/ryanmorr/css-selector-parser.svg
-[license-image]: https://img.shields.io/badge/license-Unlicense-blue.svg
+[project-url]: https://github.com/ryanmorr/parselector
+[version-image]: https://img.shields.io/github/package-json/v/ryanmorr/parselector?color=blue&style=flat-square
+[build-url]: https://github.com/ryanmorr/parselector/actions
+[build-image]: https://img.shields.io/github/actions/workflow/status/ryanmorr/parselector/node.js.yml?style=flat-square
+[license-image]: https://img.shields.io/github/license/ryanmorr/parselector?color=blue&style=flat-square
 [license-url]: UNLICENSE
