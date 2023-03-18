@@ -101,7 +101,7 @@ export default function parselector(selector) {
             } else if (char === '[') {
                 const data = selector.match(ATTRIBUTE_RE);
                 reduceSelector(data[0].length);
-                const name = unescapeCSS(data[1]).toLowerCase();
+                const name = unescapeCSS(data[1]);
                 token.attributes.push({
                     name,
                     operator: data[2] || '',
@@ -115,7 +115,7 @@ export default function parselector(selector) {
                 } else {
                     const data = selector.match(PSEUDO_CLASS_RE);
                     reduceSelector(data[0].length);
-                    const name = unescapeCSS(data[1]).toLowerCase();
+                    const name = unescapeCSS(data[1]);
                     token.pseudoClasses.push({
                         name,
                         value: unescapeCSS(data[3] || '')
